@@ -11,17 +11,20 @@ import Foundation
 let SCORE_TO_WIN = 100;
 
 class Player{
-    var score: Int;
-    var name: String;
+    private var score: Int;
+    private var name: String;
+    private var isTurn: Bool; //set to true when it is the players turn
     
     init(){
         self.score = 0;
-        self.name = "";
+        self.name = "Player";
+        self.isTurn = false;
     }
     
     init(name: String){
         self.score = 0;
         self.name = name;
+        self.isTurn = false;
     }
     
     //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
@@ -61,4 +64,36 @@ class Player{
             }
         }//end of loop
     }//end of func
+    
+    
+    func getScore() -> Int{
+        return self.score;
+    }
+    
+    func getName() -> String{
+        return self.name;
+    }
+    
+    func getIsTurn() -> Bool{
+        return self.isTurn;
+    }
+    
+    func setIsTurn(turns: Bool){
+        self.isTurn = turns;
+    }
+    
+    func incrementScore(recentRoll: Int) -> Bool{//returns true if user wins game
+        if(self.score + recentRoll >= 100){
+            return true;//indicates winner
+        }
+        else{
+            self.score += recentRoll;
+            return false;
+        }
+    }
+    
+    func setName(nom: String){
+        self.name = nom;
+    }
+    
 }
