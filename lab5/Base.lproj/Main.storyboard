@@ -41,16 +41,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkw-Jg-0NV">
-                                <rect key="frame" x="37" y="599" width="60" height="30"/>
+                                <rect key="frame" x="74" y="599" width="60" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Roll"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4i-mx-2E0">
-                                <rect key="frame" x="288" y="599" width="60" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Hold"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QhT-Bl-Fkw">
                                 <rect key="frame" x="37" y="561" width="309" height="30"/>
@@ -79,6 +73,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4i-mx-2E0">
+                                <rect key="frame" x="233" y="599" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Hold"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.84727492559523809" alpha="0.2342374559859155" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -87,6 +87,8 @@
                         <outlet property="diceLabel" destination="4oM-pN-A2v" id="97J-nn-ubi"/>
                         <outlet property="holdBtn" destination="e4i-mx-2E0" id="jqW-pD-BP3"/>
                         <outlet property="newGameBtn" destination="QhT-Bl-Fkw" id="ErH-k1-uuX"/>
+                        <outlet property="p1ProgView" destination="c8T-zJ-bJZ" id="VfM-Ag-25E"/>
+                        <outlet property="p2ProgView" destination="SM4-kP-Gft" id="wKM-K0-NBu"/>
                         <outlet property="player1Name" destination="lzr-ld-Bb0" id="Mds-RF-0ho"/>
                         <outlet property="player1Score" destination="qnP-0h-px5" id="Bos-rx-WEn"/>
                         <outlet property="player2Name" destination="Mdk-bb-fvD" id="aci-vX-PDN"/>
