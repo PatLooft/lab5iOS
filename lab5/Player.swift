@@ -14,17 +14,20 @@ class Player{
     private var score: Int;
     private var name: String;
     private var isTurn: Bool; //set to true when it is the players turn
+    private var wonLastGame: Bool;
     
     init(){
         self.score = 0;
         self.name = "Player";
         self.isTurn = false;
+        self.wonLastGame = false;
     }
     
     init(name: String){
         self.score = 0;
         self.name = name;
         self.isTurn = false;
+        self.wonLastGame = false;
     }
     
     //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
@@ -96,6 +99,14 @@ class Player{
         self.name = nom;
     }
     
+    func setWonLastGame(status: Bool){
+        self.wonLastGame = status;
+    }
+    
+    func getWonLastGame() -> Bool{
+        return self.wonLastGame;
+    }
+    
     func changeTurns(opponent: Player){
         if(self.getIsTurn()){
             self.setIsTurn(turns: false);
@@ -108,6 +119,10 @@ class Player{
         else{
             print("This case should never happen, it should always be someones turn. This shouldnt print")
         }
+    }
+    
+    func reset(){
+        self.score = 0;
     }
     
 }

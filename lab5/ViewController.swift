@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var player2Score: UILabel!;
     @IBOutlet weak var player2Name: UILabel!;
     @IBOutlet weak var diceLabel: UILabel!;
-    @IBOutlet weak var currentTurn: UILabel!;
+    @IBOutlet weak var currentPlayer: UILabel!;
     
     //buttons
     @IBOutlet weak var holdBtn: UIButton!;
@@ -37,18 +37,38 @@ class ViewController: UIViewController {
         diceLabel.text = "";
         p1ProgView.progress = 0;
         p2ProgView.progress = 0;
+        newGameBtn.layer.cornerRadius = 5;
+        holdBtn.layer.cornerRadius = 5;
+        rollBtn.layer.cornerRadius = 5;
         // Do any additional setup after loading the view, typically from a nib.
     }
 
     //pressed the new game button
     @IBAction func newGameStarted(sender: UIButton){
         //re-enable buttons since game started
-        print("MAde it into the function");
         holdBtn.isEnabled = true;
         rollBtn.isEnabled = true;
-        p1.setIsTurn(turns: true);
-        p2.setIsTurn(turns: false);
-        
+        if(p1.getWonLastGame()){
+            p1.setIsTurn(turns: true);
+            p2.setIsTurn(turns: false);
+            currentPlayer.text = "Player 1's turn";
+        }
+        else if(p2.getWonLastGame()){
+            p2.setIsTurn(turns: true);
+            p1.setIsTurn(turns: false);
+            currentPlayer.text = "Player 2's turn";
+        }
+        else{
+            p1.setIsTurn(turns: true);
+            p2.setIsTurn(turns: false);
+            currentPlayer.text = "Player 1's turn";
+        }
+        p1ProgView.progress = 0;
+        p2ProgView.progress = 0;
+        player1Score.text = "0";
+        player2Score.text = "0";
+        diceLabel.text = "";
+        diceLabel.textAlignment = .center;
     }
     
     //roll button pressed
@@ -66,9 +86,17 @@ class ViewController: UIViewController {
             if(p1.incrementScore(recentRoll: roll)){
                 //print winner message
                 diceLabel.text = "PLAYER ONE WINS";
+                diceLabel.sizeToFit();
+                p1.setWonLastGame(status: true);
+                p2.setWonLastGame(status: false);
+                holdBtn.isEnabled = false;
+                rollBtn.isEnabled = false;
+                p2.reset();
+                p1.reset();
             }
             //update progress view
             p1ProgView.progress = (Float(p1.getScore())/100.00);
+            player1Score.text = "\(p1.getScore())";
             
         }
         else if(p2.getIsTurn()){
@@ -82,9 +110,17 @@ class ViewController: UIViewController {
             }
             if(p2.incrementScore(recentRoll: roll)){
                 //print winner message
-                diceLabel.text = "PLAYER ONE WINS";
+                diceLabel.text = "PLAYER TWO WINS";
+                diceLabel.sizeToFit();//stretched outside of box before
+                p2.setWonLastGame(status: true);
+                p1.setWonLastGame(status: false);
+                holdBtn.isEnabled = false;
+                rollBtn.isEnabled = false;
+                p2.reset();
+                p1.reset();
             }
             p2ProgView.progress = (Float(p2.getScore())/100.00);
+            player2Score.text = "\(p2.getScore())";
             
         }
         else{
@@ -96,9 +132,11 @@ class ViewController: UIViewController {
     @IBAction func holdBtnPressed(sender: UIButton){
         if(p1.getIsTurn()){//p1's turn and chooses to hold
             changeTurnTxt(p1: p1, p2: p2);
+            print("Changing player turns");
             //p1.changeTurns(opponent: p2);
         }
         else if(p2.getIsTurn()){//p2's turn and chooses to hold
+            print("Changing player turns");
             changeTurnTxt(p1: p1, p2: p2);
             //p2.changeTurns(opponent: p1);
         }
@@ -110,11 +148,11 @@ class ViewController: UIViewController {
     func changeTurnTxt(p1: Player, p2: Player){
         if(p1.getIsTurn()){
             p1.changeTurns(opponent: p2);
-            currentTurn.text = "Player 2's turn"
+            currentPlayer.text = "Player 2's turn"
         }
         else if(p2.getIsTurn()){
             p2.changeTurns(opponent: p1);
-            currentTurn.text = "Player 1's turn"
+            currentPlayer.text = "Player 1's turn"
         }
     }
     
