@@ -45,12 +45,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Roll"/>
+                                <connections>
+                                    <action selector="rollBtnPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x6A-dB-Nqe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QhT-Bl-Fkw">
                                 <rect key="frame" x="37" y="561" width="309" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="New Game"/>
+                                <connections>
+                                    <action selector="newGameStartedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wns-td-ANe"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlM-N6-ajs">
                                 <rect key="frame" x="335" y="101" width="11" height="21"/>
@@ -60,7 +66,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oM-pN-A2v" userLabel="die">
-                                <rect key="frame" x="172" y="295" width="39" height="76"/>
+                                <rect key="frame" x="0.0" y="295" width="375" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="63"/>
                                 <nil key="textColor"/>
@@ -78,15 +84,25 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Hold"/>
+                                <connections>
+                                    <action selector="holdBtnPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vrf-lu-J9b"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnB-wp-nRN">
+                                <rect key="frame" x="34" y="458" width="312" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.84727492559523809" alpha="0.2342374559859155" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="currentPlayer" destination="bnB-wp-nRN" id="NuA-52-vH6"/>
                         <outlet property="diceLabel" destination="4oM-pN-A2v" id="97J-nn-ubi"/>
                         <outlet property="holdBtn" destination="e4i-mx-2E0" id="jqW-pD-BP3"/>
-                        <outlet property="newGameBtn" destination="QhT-Bl-Fkw" id="ErH-k1-uuX"/>
                         <outlet property="p1ProgView" destination="c8T-zJ-bJZ" id="VfM-Ag-25E"/>
                         <outlet property="p2ProgView" destination="SM4-kP-Gft" id="wKM-K0-NBu"/>
                         <outlet property="player1Name" destination="lzr-ld-Bb0" id="Mds-RF-0ho"/>

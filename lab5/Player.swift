@@ -14,52 +14,44 @@ class Player{
     private var score: Int;
     private var name: String;
     private var isTurn: Bool; //set to true when it is the players turn
+    private var wonLastGame: Bool;
     
     init(){
         self.score = 0;
         self.name = "Player";
         self.isTurn = false;
+        self.wonLastGame = false;
     }
     
     init(name: String){
         self.score = 0;
         self.name = name;
         self.isTurn = false;
+        self.wonLastGame = false;
     }
     
     //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
     //HELPER METHODS//
     //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
     func diceRoll() -> Int{
-        let roll = Int.random(in: 0 ... 10);
+        let roll = Int.random(in: 1 ... 6);
         return roll;
     }
     
     //simulates the player rolling the dice for their turn
     func turn(){
-        var hold: Bool;
-        hold = false;
         var roll = 0;
-        while roll != 1 && !hold{
+        while roll != 1 && self.getIsTurn(){
             roll = diceRoll();
             print("You rolled \(roll)");
             switch roll {
-            case 1:
+            case 1:                                         //turn over because of 1
                 print("Turn is over");
-                hold = true;
+                self.setIsTurn(turns: false);
             default:
-                print("Hold or continue? Score is \(self.score)")
-                // TODO: change logic so that it uses the UI not cmd line
-                // reroute the label input here to see if they want to continue or not
-                if(self.score < SCORE_TO_WIN){
-                    self.score += roll;
-                }
-                else if(hold){
-                    print("You've ended your turn with \(self.score) points.")
-                }
-                else{
+                if(self.incrementScore(recentRoll: roll)){//won game if true
+                    self.setWonLastGame(turns: true);
                     print("Congratulations! \(self.name) has won with \(self.score) points!!");
-                    hold = true;
                 }
             }
         }//end of loop
@@ -82,6 +74,14 @@ class Player{
         self.isTurn = turns;
     }
     
+    func getWonLastGame() -> Bool{
+        return self.wonLastGame;
+    }
+    
+    func setWonLastGame(turns: Bool){
+        self.wonLastGame = turns;
+    }
+    
     func incrementScore(recentRoll: Int) -> Bool{//returns true if user wins game
         if(self.score + recentRoll >= 100){
             return true;//indicates winner
@@ -95,5 +95,19 @@ class Player{
     func setName(nom: String){
         self.name = nom;
     }
+    
+    /*func swapTurns(player: Player){
+        if(self.getIsTurn()){
+            self.setIsTurn(turns: false);
+            player.setIsTurn(turns: true);
+        }
+        else if(player.getIsTurn()){
+            player.setIsTurn(turns: false);
+            self.setIsTurn(turns: true);
+        }
+        else{
+            print("This case should never happen, it should always be someones turn. This shouldnt print")
+        }
+    }*/
     
 }
