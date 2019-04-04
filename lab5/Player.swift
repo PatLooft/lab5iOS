@@ -14,20 +14,20 @@ class Player{
     private var score: Int;
     private var name: String;
     private var isTurn: Bool; //set to true when it is the players turn
-    private var wonLastGame: Bool;
+    private var startedLastGame: Bool;
     
     init(){
         self.score = 0;
         self.name = "Player";
         self.isTurn = false;
-        self.wonLastGame = false;
+        self.startedLastGame = false;
     }
     
     init(name: String){
         self.score = 0;
         self.name = name;
         self.isTurn = false;
-        self.wonLastGame = false;
+        self.startedLastGame = false;
     }
     
     //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
@@ -99,12 +99,12 @@ class Player{
         self.name = nom;
     }
     
-    func setWonLastGame(status: Bool){
-        self.wonLastGame = status;
+    func setstartedLastGame(status: Bool){
+        self.startedLastGame = status;
     }
     
-    func getWonLastGame() -> Bool{
-        return self.wonLastGame;
+    func getstartedLastGame() -> Bool{
+        return self.startedLastGame;
     }
     
     func changeTurns(opponent: Player){
