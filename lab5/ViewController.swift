@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var player2Score: UILabel!;
     @IBOutlet weak var player2Name: UILabel!;
     @IBOutlet weak var diceLabel: UILabel!;
+    @IBOutlet weak var currentTurn: UILabel!;
     
     //buttons
     @IBOutlet weak var holdBtn: UIButton!;
@@ -34,6 +35,8 @@ class ViewController: UIViewController {
         holdBtn.isEnabled = false;
         rollBtn.isEnabled = false;
         diceLabel.text = "";
+        p1ProgView.progress = 0;
+        p2ProgView.progress = 0;
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -54,6 +57,12 @@ class ViewController: UIViewController {
         if(p1.getIsTurn()){
             let roll = p1.diceRoll();
             diceLabel.text = "\(roll)";
+            if(roll == 1){//if 1 is rolled player must change turns
+                print("Changing player turns");
+                changeTurnTxt(p1: p1, p2: p2);
+                //p1.changeTurns(opponent: p2);
+                //call function to change turns
+            }
             if(p1.incrementScore(recentRoll: roll)){
                 //print winner message
                 diceLabel.text = "PLAYER ONE WINS";
@@ -65,30 +74,47 @@ class ViewController: UIViewController {
         else if(p2.getIsTurn()){
             let roll = p2.diceRoll();
             diceLabel.text = "\(roll)";
+            if(roll == 1){//if 1 is rolled player must change turns
+                print("Changing player turns");
+                changeTurnTxt(p1: p1, p2: p2);
+                //p2.changeTurns(opponent: p1);
+                //call function to change turns
+            }
             if(p2.incrementScore(recentRoll: roll)){
                 //print winner message
                 diceLabel.text = "PLAYER ONE WINS";
             }
+            p2ProgView.progress = (Float(p2.getScore())/100.00);
             
         }
         else{
             print("This case should never happen, it should always be someones turn. This shouldnt print");
         }
-        p2ProgView.progress = (Float(p1.getScore())/100.00);
     }
     
     //hold button pressed
     @IBAction func holdBtnPressed(sender: UIButton){
         if(p1.getIsTurn()){//p1's turn and chooses to hold
-            p2.setIsTurn(turns: true);
-            p1.setIsTurn(turns: false);
+            changeTurnTxt(p1: p1, p2: p2);
+            //p1.changeTurns(opponent: p2);
         }
         else if(p2.getIsTurn()){//p2's turn and chooses to hold
-            p1.setIsTurn(turns: true);
-            p2.setIsTurn(turns: false);
+            changeTurnTxt(p1: p1, p2: p2);
+            //p2.changeTurns(opponent: p1);
         }
         else{
             print("This case should never happen, it should always be someones turn. This shouldnt print")
+        }
+    }
+    
+    func changeTurnTxt(p1: Player, p2: Player){
+        if(p1.getIsTurn()){
+            p1.changeTurns(opponent: p2);
+            currentTurn.text = "Player 2's turn"
+        }
+        else if(p2.getIsTurn()){
+            p2.changeTurns(opponent: p1);
+            currentTurn.text = "Player 1's turn"
         }
     }
     
@@ -110,3 +136,4 @@ class ViewController: UIViewController {
     print("This case should never happen, it should always be someones turn. This shouldnt print")
  }
  */
+

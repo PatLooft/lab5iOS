@@ -13,6 +13,7 @@
 		E8360BED224D1CA700A183C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8360BEC224D1CA700A183C3 /* Assets.xcassets */; };
 		E8360BF0224D1CA700A183C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8360BEE224D1CA700A183C3 /* LaunchScreen.storyboard */; };
 		E8360BF8224D1D3300A183C3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8360BF7224D1D3300A183C3 /* Player.swift */; };
+		E8F26F8F2252532D007F230C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F26F8E2252532D007F230C /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E8360BEF224D1CA700A183C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8360BF1224D1CA700A183C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8360BF7224D1D3300A183C3 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		E8F26F8E2252532D007F230C /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				E8360BE7224D1CA600A183C3 /* ViewController.swift */,
 				E8360BE9224D1CA600A183C3 /* Main.storyboard */,
 				E8360BF7224D1D3300A183C3 /* Player.swift */,
+				E8F26F8E2252532D007F230C /* Game.swift */,
 				E8360BEC224D1CA700A183C3 /* Assets.xcassets */,
 				E8360BEE224D1CA700A183C3 /* LaunchScreen.storyboard */,
 				E8360BF1224D1CA700A183C3 /* Info.plist */,
@@ -141,6 +144,7 @@
 				E8360BE8224D1CA600A183C3 /* ViewController.swift in Sources */,
 				E8360BF8224D1D3300A183C3 /* Player.swift in Sources */,
 				E8360BE6224D1CA600A183C3 /* AppDelegate.swift in Sources */,
+				E8F26F8F2252532D007F230C /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

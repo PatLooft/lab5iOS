@@ -31,7 +31,7 @@ class Player{
     //HELPER METHODS//
     //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
     func diceRoll() -> Int{
-        let roll = Int.random(in: 0 ... 10);
+        let roll = Int.random(in: 1 ... 6);
         return roll;
     }
     
@@ -44,23 +44,23 @@ class Player{
             roll = diceRoll();
             print("You rolled \(roll)");
             switch roll {
-            case 1:
-                print("Turn is over");
-                hold = true;
-            default:
-                print("Hold or continue? Score is \(self.score)")
-                // TODO: change logic so that it uses the UI not cmd line
-                // reroute the label input here to see if they want to continue or not
-                if(self.score < SCORE_TO_WIN){
-                    self.score += roll;
-                }
-                else if(hold){
-                    print("You've ended your turn with \(self.score) points.")
-                }
-                else{
-                    print("Congratulations! \(self.name) has won with \(self.score) points!!");
+                case 1:
+                    print("Turn is over");
                     hold = true;
-                }
+                default:
+                    print("Hold or continue? Score is \(self.score)")
+                    // TODO: change logic so that it uses the UI not cmd line
+                    // reroute the label input here to see if they want to continue or not
+                    if(self.score < SCORE_TO_WIN){
+                        self.score += roll;
+                    }
+                    else if(hold){
+                        print("You've ended your turn with \(self.score) points.")
+                    }
+                    else{
+                        print("Congratulations! \(self.name) has won with \(self.score) points!!");
+                        hold = true;
+                    }
             }
         }//end of loop
     }//end of func
@@ -94,6 +94,20 @@ class Player{
     
     func setName(nom: String){
         self.name = nom;
+    }
+    
+    func changeTurns(opponent: Player){
+        if(self.getIsTurn()){
+            self.setIsTurn(turns: false);
+            opponent.setIsTurn(turns: true);
+        }
+        else if(opponent.getIsTurn()){
+            opponent.setIsTurn(turns: false);
+            self.setIsTurn(turns: true);
+        }
+        else{
+            print("This case should never happen, it should always be someones turn. This shouldnt print")
+        }
     }
     
 }
