@@ -49,14 +49,14 @@ class ViewController: UIViewController {
         holdBtn.isEnabled = true;
         rollBtn.isEnabled = true;
         if(p1.getWonLastGame()){
-            p1.setIsTurn(turns: true);
-            p2.setIsTurn(turns: false);
-            currentPlayer.text = "Player 1's turn";
-        }
-        else if(p2.getWonLastGame()){
             p2.setIsTurn(turns: true);
             p1.setIsTurn(turns: false);
             currentPlayer.text = "Player 2's turn";
+        }
+        else if(p2.getWonLastGame()){
+            p1.setIsTurn(turns: true);
+            p2.setIsTurn(turns: false);
+            currentPlayer.text = "Player 1's turn";
         }
         else{
             p1.setIsTurn(turns: true);
